@@ -106,28 +106,6 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    int n, t, k, d;
-    cin >> n >> t >> k >> d;
-    int timeTakenManually = 0, timeTakenWithS = d;
-    while (n <= 0)
-    {
-        timeTakenManually += t;
-        n = n - k;
-    }
-    while (n <= 0)
-    {
-        timeTakenWithS += t;
-        n = n - k;
-    }
-
-    if (timeTakenManually < timeTakenWithS)
-    {
-        cout << "NO";
-    }
-    else
-    {
-        cout << "YES";
-    }
 }
 
 /*
