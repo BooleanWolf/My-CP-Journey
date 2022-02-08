@@ -97,15 +97,66 @@ string toLower(string s)
     return s;
 }
 
+bool nonDegenerateTriangle(int a, int b, int c)
+{
+    // cout << endl;
+    // cout << a << b << c << endl;
+    if (a + b > c && a + c > b && b + c > a)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+bool nonDegenerateTriangleArray(vector<int> v, int size)
+{
+    sort(v.begin(), v.end());
+
+    for (int i = 0; i < size - 2; i++)
+
+        if (v[i] + v[i + 1] > v[i + 2])
+            return true;
+    return false;
+}
+
 #define MX 10e9
 
 int main()
 {
 
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-#endif
+    // #ifndef ONLINE_JUDGE
+    //     freopen("input.txt", "r", stdin);
+    //     freopen("output.txt", "w", stdout);
+    // #endif
+    // How many integers in {1, 2, .... , 100} divisible by 2 or 3;
+
+    int n = 100;
+    int cnt1 = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        if (i % 2 == 0 || i % 3 == 0)
+        {
+            cnt1 += 1;
+        }
+    }
+
+    cout << cnt1 << endl;
+
+    int cnt2 = 0;
+    int c2 = n / 2;
+    int c3 = n / 3;
+    int c6 = n / (2 * 3);
+    cnt2 = c2 + c3 - c6;
+    cout << cnt2 << endl;
+
+    if (cnt2 == cnt1)
+    {
+        cout << "It Worked!!" << endl;
+    }
 }
 
 /*
