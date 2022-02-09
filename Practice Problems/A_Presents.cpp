@@ -28,7 +28,6 @@ typedef long long int ll;
 typedef long double ld;
 typedef vector<int> vi;
 typedef map<int, int> mii;
-typedef queue<int> qi;
 
 // /* 128 bit integer reading */
 
@@ -124,7 +123,7 @@ typedef queue<int> qi;
 //     return s;
 // }
 
-// int findingElementBySecondElement(mii m, int key)
+// int findingElementBySecondElement(map<int, int> m, int key)
 // {
 //     for (auto x : m)
 //     {
@@ -142,10 +141,26 @@ typedef queue<int> qi;
 int main()
 {
 
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-#endif
+    // #ifndef ONLINE_JUDGE
+    //     freopen("input.txt", "r", stdin);
+    //     freopen("output.txt", "w", stdout);
+    // #endif
+
+    int n;
+    cin >> n;
+    map<int, int> f;
+    for (int i = 1; i <= n; i++)
+    {
+        int d;
+        cin >> d;
+        f.insert(pair<int, int>(i, d));
+    }
+    for (int i = 1; i <= n; i++)
+    {
+        int karThekeNise = 0;
+        karThekeNise = findingElementBySecondElement(f, i);
+        cout << karThekeNise << " ";
+    }
 }
 
 /*

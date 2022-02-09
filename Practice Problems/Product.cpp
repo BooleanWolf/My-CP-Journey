@@ -27,42 +27,40 @@ using namespace std;
 typedef long long int ll;
 typedef long double ld;
 typedef vector<int> vi;
-typedef map<int, int> mii;
-typedef queue<int> qi;
 
-// /* 128 bit integer reading */
+/* 128 bit integer reading */
 
-// __int128 read()
-// {
-//     __int128 x = 0, f = 1;
-//     char ch = getchar();
-//     while (ch < '0' || ch > '9')
-//     {
-//         if (ch == '-')
-//             f = -1;
-//         ch = getchar();
-//     }
-//     while (ch >= '0' && ch <= '9')
-//     {
-//         x = x * 10 + ch - '0';
-//         ch = getchar();
-//     }
-//     return x * f;
-// }
-// void print(__int128 x)
-// {
-//     if (x < 0)
-//     {
-//         putchar('-');
-//         x = -x;
-//     }
-//     if (x > 9)
-//         print(x / 10);
-//     putchar(x % 10 + '0');
-// }
-// bool cmp(__int128 x, __int128 y) { return x > y; }
+__int128 read()
+{
+    __int128 x = 0, f = 1;
+    char ch = getchar();
+    while (ch < '0' || ch > '9')
+    {
+        if (ch == '-')
+            f = -1;
+        ch = getchar();
+    }
+    while (ch >= '0' && ch <= '9')
+    {
+        x = x * 10 + ch - '0';
+        ch = getchar();
+    }
+    return x * f;
+}
+void print(__int128 x)
+{
+    if (x < 0)
+    {
+        putchar('-');
+        x = -x;
+    }
+    if (x > 9)
+        print(x / 10);
+    putchar(x % 10 + '0');
+}
+bool cmp(__int128 x, __int128 y) { return x > y; }
 
-// /* a = read() for reading the integer and print(a) to print that integer.  */
+/* a = read() for reading the integer and print(a) to print that integer.  */
 
 // bool nonDegenerateTriangle(int a, int b, int c)
 // {
@@ -124,28 +122,26 @@ typedef queue<int> qi;
 //     return s;
 // }
 
-// int findingElementBySecondElement(mii m, int key)
-// {
-//     for (auto x : m)
-//     {
-//         if (x.second == key)
-//         {
-//             return x.first;
-//         }
-//     }
-
-//     return -1;
-// }
-
 #define MX 10e9
 
 int main()
 {
 
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-#endif
+    // #ifndef ONLINE_JUDGE
+    //     freopen("input.txt", "r", stdin);
+    //     freopen("output.txt", "w", stdout);
+    // #endif
+
+    __int128 a, b;
+    int x, y;
+    while (cin)
+    {
+        a = read();
+        b = read();
+
+        print(a * b);
+        cout << endl;
+    }
 }
 
 /*

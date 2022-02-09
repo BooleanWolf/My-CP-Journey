@@ -28,7 +28,6 @@ typedef long long int ll;
 typedef long double ld;
 typedef vector<int> vi;
 typedef map<int, int> mii;
-typedef queue<int> qi;
 
 // /* 128 bit integer reading */
 
@@ -142,10 +141,23 @@ typedef queue<int> qi;
 int main()
 {
 
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-#endif
+    // #ifndef ONLINE_JUDGE
+    //     freopen("input.txt", "r", stdin);
+    //     freopen("output.txt", "w", stdout);
+    // #endif
+
+    string a, b;
+    cin >> a >> b;
+    int la = a.size();
+    int lb = b.size();
+    if (a == b)
+    {
+        cout << "-1" << endl;
+    }
+    else
+    {
+        cout << max(la, lb) << endl;
+    }
 }
 
 /*

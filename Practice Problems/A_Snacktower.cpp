@@ -89,11 +89,11 @@ typedef queue<int> qi;
 //     return false;
 // }
 
-// void print_vector(vector<int> vec)
-// {
-//     for (int i = 0; i < vec.size(); i++)
-//         cout << vec[i] << " ";
-// }
+void print_vector(vector<int> vec)
+{
+    for (int i = 0; i < vec.size(); i++)
+        cout << vec[i] << endl;
+}
 
 // int isItEvenOdd(int d)
 // {
@@ -142,10 +142,36 @@ typedef queue<int> qi;
 int main()
 {
 
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-#endif
+    // #ifndef ONLINE_JUDGE
+    //     freopen("input.txt", "r", stdin);
+    //     freopen("output.txt", "w", stdout);
+    // #endif
+    vi r;
+    int n;
+    cin >> n;
+    int k = n;
+    int hold = 1;
+    for (int i = 0; i < k; i++)
+    {
+        int d;
+        cin >> d;
+        r.push_back(d);
+        if (d == n)
+        {
+            sort(r.begin(), r.end(), greater<int>());
+            print_vector(r);
+            r.clear();
+            n = n - hold;
+        }
+        else
+        {
+            cout << "Paini" << endl;
+            if (d == n)
+            {
+                hold += 1;
+            }
+        }
+    }
 }
 
 /*

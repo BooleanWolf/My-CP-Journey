@@ -28,7 +28,6 @@ typedef long long int ll;
 typedef long double ld;
 typedef vector<int> vi;
 typedef map<int, int> mii;
-typedef queue<int> qi;
 
 // /* 128 bit integer reading */
 
@@ -124,28 +123,48 @@ typedef queue<int> qi;
 //     return s;
 // }
 
-// int findingElementBySecondElement(mii m, int key)
-// {
-//     for (auto x : m)
-//     {
-//         if (x.second == key)
-//         {
-//             return x.first;
-//         }
-//     }
-
-//     return -1;
-// }
+int findingElementBySecondElement(mii m, int key)
+{
+    for (auto x : m)
+    {
+        if (x.second == key)
+        {
+            return x.first;
+        }
+    }
+    return -1;
+}
 
 #define MX 10e9
 
 int main()
 {
 
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-#endif
+    // #ifndef ONLINE_JUDGE
+    //     freopen("input.txt", "r", stdin);
+    //     freopen("output.txt", "w", stdout);
+    // #endif
+
+    int n;
+    vi x;
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        int d;
+        cin >> d;
+        x.push_back(d);
+    }
+    int Min = abs(x[0] - x[1]);
+    int Max = abs(x[n - 1] - x[0]);
+    cout << Min << " " << Max << endl;
+    for (int i = 1; i < n; i++)
+    {
+        int k = x[i];
+        // cout << k << endl;
+        int Min = min(abs(x[i] - x[i + 1]), abs(x[i - 1] - x[i]));
+        int Max = max(abs(x[n - 1] - x[i]), abs(x[i] - x[0]));
+        cout << Min << ' ' << Max << endl;
+    }
 }
 
 /*

@@ -26,9 +26,8 @@ using namespace std;
 
 typedef long long int ll;
 typedef long double ld;
+typedef unsigned int ui;
 typedef vector<int> vi;
-typedef map<int, int> mii;
-typedef queue<int> qi;
 
 // /* 128 bit integer reading */
 
@@ -124,28 +123,35 @@ typedef queue<int> qi;
 //     return s;
 // }
 
-// int findingElementBySecondElement(mii m, int key)
-// {
-//     for (auto x : m)
-//     {
-//         if (x.second == key)
-//         {
-//             return x.first;
-//         }
-//     }
-
-//     return -1;
-// }
-
 #define MX 10e9
 
 int main()
 {
 
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-#endif
+    // #ifndef ONLINE_JUDGE
+    //     freopen("input.txt", "r", stdin);
+    //     freopen("output.txt", "w", stdout);
+    // #endif
+
+    ui n;
+    ui x;
+
+    while ((cin >> n))
+    {
+        if (n == 0)
+        {
+            break;
+        }
+        x = sqrt(n);
+        if (n == x * x)
+        {
+            cout << "yes" << endl;
+        }
+        else
+        {
+            cout << "no" << endl;
+        }
+    }
 }
 
 /*
