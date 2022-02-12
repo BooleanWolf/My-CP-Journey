@@ -118,11 +118,11 @@ typedef queue<int> qi;
 //     return arr[0];
 // }
 
-// string toLower(string s)
-// {
-//     transform(s.begin(), s.end(), s.begin(), ::tolower);
-//     return s;
-// }
+string toLower(string s)
+{
+    transform(s.begin(), s.end(), s.begin(), ::tolower);
+    return s;
+}
 
 // int findingElementBySecondElement(mii m, int key)
 // {
@@ -137,26 +137,14 @@ typedef queue<int> qi;
 //     return -1;
 // }
 
-// void getIndex(vector<int> v, int K)
+// ********** Set element ******************** Accessing
+// set<char>::iterator itr;
+// cout << "\nThe set s1 is : \n";
+// for (itr = sh.begin(); itr != sh.end(); itr++)
 // {
-//     auto it = find(v.begin(), v.end(), K);
-
-//     // If element was found
-//     if (it != v.end())
-//     {
-
-//         // calculating the index
-//         // of K
-//         int index = it - v.begin();
-//         cout << index << endl;
-//     }
-//     else
-//     {
-//         // If the element is not
-//         // present in the vector
-//         cout << "-1" << endl;
-//     }
+//     cout << *itr << " ";
 // }
+// cout << endl;
 
 #define MX 10e9
 
@@ -167,6 +155,45 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
+    int n;
+    string s;
+    cin >> n >> s;
+    s = toLower(s);
+    sort(s.begin(), s.end());
+    // cout << s << endl;
+    int start = 97;
+    bool goon = true;
+    char prev = '*';
+    int c = 0;
+    for (auto u : s)
+    {
+
+        // cout << "Prev = " << prev << " when u is " << u << " and start is " << start << endl;
+        if (prev == u)
+        {
+            goon = false;
+        }
+        else
+        {
+            goon = true;
+        }
+        if ((int)u == start && goon)
+        {
+            // cout << "hyse" << endl;
+            start += 1;
+            c++;
+        }
+        prev = u;
+    }
+
+    if (c == 26)
+    {
+        cout << "YES";
+    }
+    else
+    {
+        cout << "NO";
+    }
 }
 
 /*

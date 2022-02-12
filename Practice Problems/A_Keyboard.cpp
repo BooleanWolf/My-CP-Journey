@@ -27,6 +27,8 @@ using namespace std;
 typedef long long int ll;
 typedef long double ld;
 typedef vector<int> vi;
+typedef vector<vector<int>> vvi;
+typedef vector<vector<string>> vvs;
 typedef map<int, int> mii;
 typedef queue<int> qi;
 
@@ -141,19 +143,13 @@ typedef queue<int> qi;
 // {
 //     auto it = find(v.begin(), v.end(), K);
 
-//     // If element was found
+//
 //     if (it != v.end())
 //     {
-
-//         // calculating the index
-//         // of K
 //         int index = it - v.begin();
 //         cout << index << endl;
 //     }
-//     else
-//     {
-//         // If the element is not
-//         // present in the vector
+//     else {
 //         cout << "-1" << endl;
 //     }
 // }
@@ -167,6 +163,26 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
+    char c;
+    string s;
+    cin >> c;
+    cin >> s;
+    string keyboard = "qwertyuiopasdfghjkl;zxcvbnm,./";
+    string answer;
+    int len = s.length();
+    for (int i = 0; i < len; i++)
+    {
+        int ind = keyboard.find(s[i]);
+        if (c == 'R')
+        {
+            answer += keyboard[ind - 1];
+        }
+        else
+        {
+            answer += keyboard[ind + 1];
+        }
+    }
+    cout << answer << endl;
 }
 
 /*

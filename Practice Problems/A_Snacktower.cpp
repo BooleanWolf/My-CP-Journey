@@ -92,7 +92,7 @@ typedef queue<int> qi;
 void print_vector(vector<int> vec)
 {
     for (int i = 0; i < vec.size(); i++)
-        cout << vec[i] << endl;
+        cout << vec[i] << " ";
 }
 
 // int isItEvenOdd(int d)
@@ -138,6 +138,27 @@ void print_vector(vector<int> vec)
 // }
 
 #define MX 10e9
+#define MAX 100001
+
+int current = 0;
+int arr[MAX];
+
+void sol(int x, int curr)
+{
+    for (int i = curr; i > 0; i--)
+    {
+        if (arr[i])
+        {
+            cout << i << " ";
+            arr[i] = 0;
+            current = i - 1;
+        }
+        else
+        {
+            break;
+        }
+    }
+}
 
 int main()
 {
@@ -146,32 +167,20 @@ int main()
     //     freopen("input.txt", "r", stdin);
     //     freopen("output.txt", "w", stdout);
     // #endif
-    vi r;
     int n;
     cin >> n;
-    int k = n;
-    int hold = 1;
-    for (int i = 0; i < k; i++)
+    current = n;
+
+    for (int i = 0; i < n; i++)
     {
         int d;
         cin >> d;
-        r.push_back(d);
-        if (d == n)
-        {
-            sort(r.begin(), r.end(), greater<int>());
-            print_vector(r);
-            r.clear();
-            n = n - hold;
-        }
-        else
-        {
-            cout << "Paini" << endl;
-            if (d == n)
-            {
-                hold += 1;
-            }
-        }
+        arr[d] = 1;
+        sol(d, current);
+        cout << endl;
     }
+
+    return 0;
 }
 
 /*
