@@ -153,6 +153,63 @@ typedef queue<int> qi;
 
 #define MX 10e9
 
+class Graph
+{
+
+    void DFSUtill(int v);
+
+public:
+    map<int, bool> visited;
+    map<int, list<int>> adj;
+
+    void addEdge(int v, int d);
+    void DFSUndirected();
+    void DFS(int v);
+};
+
+void Graph::addEdge(int v, int d)
+{
+    adj[v].push_back(d);
+}
+
+void Graph::DFSUtill(int v)
+{
+    visited[v] = true;
+    cout << v << " ";
+
+    for (auto i = adj[v].begin(); i != adj[v].end(); i++)
+    {
+        if (!visited[*i])
+        {
+            DFSUtill(*i);
+        }
+    }
+}
+
+void Graph::DFSUndirected()
+{
+    for (auto i : adj)
+    {
+        if (visited[i.first] == false)
+        {
+            DFSUtill(i.first);
+        }
+    }
+}
+
+void Graph::DFS(int v)
+{
+    visited[v] = true;
+    cout << v << " ";
+    for (auto i = adj[v].begin(); i != adj[v].end(); i++)
+    {
+        if (!visited[*i])
+        {
+            DFS(*i);
+        }
+    }
+}
+
 int main()
 {
 
@@ -160,6 +217,19 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
+
+    Graph g;
+    g.addEdge(0, 1);
+    g.addEdge(0, 2);
+    g.addEdge(1, 2);
+    g.addEdge(2, 0);
+    g.addEdge(2, 3);
+    g.addEdge(3, 3);
+    g.addEdge(9, 3);
+
+    g.DFSUndirected();
+
+    return 0;
 }
 
 /*

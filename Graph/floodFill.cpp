@@ -152,7 +152,39 @@ typedef queue<int> qi;
 // }
 
 #define MX 10e9
+#define M 8
+#define N 8
 
+void floodfill(int myScreen[][N], int x, int y, int currColor, int newColor)
+{
+    if (x < 0 || x >= M || y < 0 || y >= N) // If out of the matrices
+    {
+        return;
+    }
+
+    if (myScreen[x][y] != currColor)
+    {
+        return;
+    }
+
+    if (myScreen[x][y] == newColor)
+    {
+        return;
+    }
+
+    myScreen[x][y] = newColor;
+
+    floodfill(myScreen, x + 1, y, currColor, newColor);
+    floodfill(myScreen, x - 1, y, currColor, newColor);
+    floodfill(myScreen, x, y + 1, currColor, newColor);
+    floodfill(myScreen, x, y - 1, currColor, newColor);
+}
+
+void findColor(int myScreen[][N], int x, int y, int newColor)
+{
+    int currColor = myScreen[x][y];
+    floodfill(myScreen, x, y, currColor, newColor);
+}
 int main()
 {
 
@@ -160,6 +192,31 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
+
+    int myScreen[M][N] =
+        {
+            {3, 2, 1, 1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1, 1, 0, 0},
+            {1, 0, 0, 1, 1, 0, 1, 1},
+            {1, 2, 2, 2, 2, 0, 1, 0},
+            {1, 1, 1, 2, 2, 0, 1, 0},
+            {1, 1, 1, 2, 2, 2, 2, 0},
+            {1, 1, 1, 1, 1, 2, 1, 1},
+            {1, 1, 1, 1, 1, 2, 2, 1},
+        };
+
+    int x = 4, y = 4, newColor = 9;
+    findColor(myScreen, x, y, newColor);
+    cout << "Updated myScreen : \n";
+
+    // printing screen
+    for (int i = 0; i < M; i++)
+    {
+        for (int j = 0; j < N; j++)
+            cout << myScreen[i][j] << " ";
+        cout << endl;
+    }
+    return 0;
 }
 
 /*
