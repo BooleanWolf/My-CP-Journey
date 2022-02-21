@@ -160,6 +160,30 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
+
+    int n, t;
+    cin >> n >> t;
+    if (t == 10 && n == 1)
+    {
+        cout << -1 << endl;
+        return 0;
+    }
+
+    if (t == 10)
+    {
+        cout << 1;
+        for (int i = 0; i < n - 1; i++)
+        {
+            cout << 0;
+        }
+        return 0;
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << t;
+    }
+    return 0;
 }
 /*
 

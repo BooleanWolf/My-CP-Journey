@@ -156,10 +156,58 @@ typedef queue<int> qi;
 int main()
 {
 
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-#endif
+    // #ifndef ONLINE_JUDGE
+    //     freopen("input.txt", "r", stdin);
+    //     freopen("output.txt", "w", stdout);
+    // #endif
+
+    int n;
+    vi a;
+    vi b;
+
+    cin >> n;
+
+    int rated = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        int d, e;
+        cin >> d >> e;
+        a.push_back(d);
+        b.push_back(e);
+        if (d != e)
+        {
+            rated = 1;
+        }
+    }
+
+    if (rated)
+    {
+        cout << "rated" << endl;
+        return 0;
+    }
+
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            if (a[i] < a[j])
+            {
+                rated = 90;
+            }
+        }
+    }
+
+    if (rated == 90)
+    {
+        cout << "unrated" << endl;
+    }
+    else
+    {
+        cout << "maybe" << endl;
+    }
+
+    return 0;
 }
 /*
 

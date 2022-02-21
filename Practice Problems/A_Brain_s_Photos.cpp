@@ -160,6 +160,34 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
+    int n, m;
+    cin >> n >> m;
+    vector<vector<string>> color;
+    int c = 0;
+    for (int i = 0; i < n; i++)
+    {
+        vector<string> temp;
+        for (int j = 0; j < m; j++)
+        {
+            string s;
+            cin >> s;
+            temp.push_back(s);
+            if (s == "C" || s == "M" || s == "Y")
+            {
+                c = 1;
+            }
+        }
+        color.push_back(temp);
+        temp.clear();
+    }
+    if (c)
+    {
+        cout << "#Color" << endl;
+    }
+    else
+    {
+        cout << "#Black&White" << endl;
+    }
 }
 /*
 

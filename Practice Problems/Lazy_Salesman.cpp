@@ -89,11 +89,11 @@ typedef queue<int> qi;
 //     return false;
 // }
 
-// void print_vector(vector<int> vec)
-// {
-//     for (int i = 0; i < vec.size(); i++)
-//         cout << vec[i] << " ";
-// }
+void print_vector(vector<int> vec)
+{
+    for (int i = 0; i < vec.size(); i++)
+        cout << vec[i] << " ";
+}
 
 // int isItEvenOdd(int d)
 // {
@@ -160,6 +160,36 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
+    int n;
+    cin >> n;
+    while (n--)
+    {
+        int n, w;
+        cin >> n >> w;
+        vi ai;
+        for (int i = 0; i < n; i++)
+        {
+            int d;
+            cin >> d;
+            ai.push_back(d);
+        }
+        sort(ai.begin(), ai.end(), greater<int>());
+        print_vector(ai);
+        int sum = 0, count = 0;
+        ;
+        for (auto u : ai)
+        {
+            sum += u;
+            cout << sum << endl;
+            count++;
+            if (sum == w)
+            {
+                break;
+            }
+        }
+        cout << n - count << endl;
+        ai.clear();
+    }
 }
 /*
 

@@ -160,6 +160,26 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        int x;
+        cin >> x;
+
+        if (x > 65)
+        {
+            cout << "Overlaod" << endl;
+        }
+        else if (x < 35)
+        {
+            cout << "Underload" << endl;
+        }
+        else
+        {
+            cout << "Normal" << endl;
+        }
+    }
 }
 /*
 

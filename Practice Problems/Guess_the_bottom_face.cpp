@@ -160,6 +160,26 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        vi peeps;
+        for (int i = 0; i < 3; i++)
+        {
+            int d;
+            cin >> d;
+            peeps.push_back(d);
+        }
+        if (peeps[0] + peeps[2] > peeps[1])
+        {
+            cout << peeps[0] + peeps[2] << endl;
+        }
+        else
+        {
+            cout << peeps[1] << endl;
+        }
+    }
 }
 /*
 

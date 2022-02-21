@@ -160,6 +160,47 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
+    int n;
+    cin >> n;
+    map<string, int> score;
+    for (int i = 0; i < n; i++)
+    {
+        string s;
+        cin >> s;
+        if (score.count(s) == 0)
+        {
+            score.insert({s, 1});
+        }
+        else
+        {
+            score[s]++;
+        }
+    }
+    int l = 0;
+    int max = 0;
+    string winning;
+    for (auto i = score.begin(); i != score.end(); i++)
+    {
+        l++;
+    }
+    if (l == 1)
+    {
+        auto i = score.begin();
+        cout << i->first << endl;
+    }
+    else
+    {
+        for (auto j = score.begin(); j != score.end(); j++)
+        {
+            int goal = j->second;
+            if (goal > max)
+            {
+                max = goal;
+                winning = j->first;
+            }
+        }
+        cout << winning << endl;
+    }
 }
 /*
 
