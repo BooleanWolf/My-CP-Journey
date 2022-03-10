@@ -153,15 +153,66 @@ typedef queue<int> qi;
 
 #define MX 10e9
 
+// int isAntiFib(int arr[], int n)
+// {
+//     for (int i = 2; i < n; i++)
+//     {
+//         if (arr[i - 1] + arr[i - 2] == arr[i])
+//         {
+//             return 0;
+//         }
+//     }
+
+//     return 1;
+// }
+
+void printArray(int arr[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+}
+
 int main()
 {
 
-    // #ifndef ONLINE_JUDGE
-    //     freopen("input.txt", "r", stdin);
-    //     freopen("output.txt", "w", stdout);
-    // #endif
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif
+
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int arr[50], n, j;
+        cin >> n;
+        j = n;
+        int count = 0;
+        for (int i = 0; i < n; i++)
+        {
+            arr[i] = j;
+            j--;
+        }
+
+        do
+        {
+
+            printArray(arr, n);
+            count += 1;
+            cout << endl;
+            if (count == n)
+            {
+                break;
+            }
+        } while (prev_permutation(arr, arr + n));
+    }
 }
 /*
+
+
+
 
 
 

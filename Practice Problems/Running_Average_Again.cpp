@@ -156,6 +156,27 @@ typedef queue<int> qi;
 int main()
 {
 
+    // while (k--)
+    // {
+    //     int x, y;
+    //     cin >> x >> y;
+    //     board[3][3] = 'r';
+    // }
+    float n;
+    cin >> n;
+    float i = 1;
+    float sum = 0;
+    float avg = 0;
+    while (n--)
+    {
+        int d;
+        cin >> d;
+        sum += d;
+        avg = sum / i;
+        cout << avg << endl;
+        i += 1;
+    }
+
     // #ifndef ONLINE_JUDGE
     //     freopen("input.txt", "r", stdin);
     //     freopen("output.txt", "w", stdout);

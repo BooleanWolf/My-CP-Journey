@@ -160,6 +160,24 @@ int main()
     //     freopen("input.txt", "r", stdin);
     //     freopen("output.txt", "w", stdout);
     // #endif
+    int n;
+    cin >> n;
+    int first = 1;
+    int second = 1;
+    int nextN = 0;
+    if (n == 1 || n == 2)
+    {
+        cout << 1 << endl;
+        return 0;
+    }
+
+    for (int i = 2; i < n; i++)
+    {
+        nextN = first + second;
+        first = second;
+        second = nextN;
+    }
+    cout << nextN << endl;
 }
 /*
 
