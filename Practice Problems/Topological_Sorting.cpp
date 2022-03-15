@@ -151,7 +151,35 @@ typedef queue<int> qi;
 //     }
 // }
 
-#define MX 10e9
+#define MX 100009
+
+vector<int> graph[MX];
+int visited[MX];
+vector<int> ans;
+vector<int> result;
+bool cycle;
+
+void dfs(int v)
+{
+    visited[v] = 1;
+    sort(graph[v].begin(), graph[v].end());
+
+    for (int i = graph[v].size() - 1; i >= 0; i--)
+    {
+        if (visited[graph[v][i]] == 0)
+        {
+            dfs(graph[v][i]);
+        }
+        else if (visited[graph[v][i]] == 1)
+        {
+            cycle = true;
+            return;
+        }
+    }
+
+    visited[v] = 2;
+    result.push_back(v);
+}
 
 int main()
 {
@@ -160,8 +188,37 @@ int main()
     //     freopen("input.txt", "r", stdin);
     //     freopen("output.txt", "w", stdout);
     // #endif
+    int n, m;
+    cin >> n >> m;
+    cycle = false;
+    for (int i = 0; i < m; i++)
+    {
+        int a, b;
+        cin >> a >> b;
+        graph[a].push_back(b);
+    }
 
-       return 0;
+    for (int i = n; i >= 1; i--)
+    {
+        if (visited[i] == 0)
+        {
+            dfs(i);
+        }
+    }
+
+    if (cycle == true)
+    {
+        cout << "Sandro Fails. \n";
+    }
+    else
+    {
+        for (int i = result.size() - 1; i >= 0; i--)
+        {
+            printf("%d ", result[i]);
+        }
+    }
+
+    return 0;
 }
 /*
 

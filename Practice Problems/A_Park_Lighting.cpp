@@ -160,8 +160,17 @@ int main()
     //     freopen("input.txt", "r", stdin);
     //     freopen("output.txt", "w", stdout);
     // #endif
+    int n;
+    cin >> n;
+    while (n--)
+    {
+        ll m, n;
+        cin >> m >> n;
+        double total = m * n;
+        cout << ceil(total / 2) << endl;
+    }
 
-       return 0;
+    return 0;
 }
 /*
 

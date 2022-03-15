@@ -161,7 +161,33 @@ int main()
     //     freopen("output.txt", "w", stdout);
     // #endif
 
-       return 0;
+    int n;
+    cin >> n;
+    int m = n % 4;
+    int ldigit = 0;
+    if (n == 0)
+    {
+        cout << 1 << endl;
+        return 0;
+    }
+
+    switch (m)
+    {
+    case 0:
+        ldigit = 6;
+        break;
+    case 1:
+        ldigit = 8;
+        break;
+    case 2:
+        ldigit = 4;
+        break;
+    case 3:
+        ldigit = 2;
+        break;
+    }
+    cout << ldigit << endl;
+    return 0;
 }
 /*
 

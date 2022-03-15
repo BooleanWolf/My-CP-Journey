@@ -160,8 +160,33 @@ int main()
     //     freopen("input.txt", "r", stdin);
     //     freopen("output.txt", "w", stdout);
     // #endif
+    int n, k;
+    cin >> n >> k;
+    ll number;
+    int gn = 0;
+    while (cin >> number)
+    {
+        if (log2(number) + 1 > k)
+        {
+            continue;
+        }
+        while (number)
+        {
+            int d = number % 10;
+            if (d > k)
+            {
+                continue;
+            }
+            number = number / 10;
+        }
+        if (number == 0)
+        {
+            gn++;
+        }
+    }
+    cout << gn << endl;
 
-       return 0;
+    return 0;
 }
 /*
 

@@ -89,11 +89,11 @@ typedef queue<int> qi;
 //     return false;
 // }
 
-// void print_vector(vector<int> vec)
-// {
-//     for (int i = 0; i < vec.size(); i++)
-//         cout << vec[i] << " ";
-// }
+void print_vector(vector<int> vec)
+{
+    for (int i = 0; i < vec.size(); i++)
+        cout << vec[i] << " ";
+}
 
 // int isItEvenOdd(int d)
 // {
@@ -160,8 +160,30 @@ int main()
     //     freopen("input.txt", "r", stdin);
     //     freopen("output.txt", "w", stdout);
     // #endif
+    ll misty, patil;
+    cin >> misty >> patil;
+    vector<long long int> patils;
+    vector<long long int> ans;
+    while (patil--)
+    {
+        ll l, m;
+        cin >> l >> m;
+        patils.push_back(l);
+        patils.push_back(m);
+    }
+    ll maxSum = 0;
+    for (int i = 1; i < patils.size(); i = i + 2)
+    {
+        maxSum += patils[i];
+        cout << maxSum << ' ';
+    }
+    if (maxSum > misty)
+    {
+        cout << -1;
+        return 0;
+    }
 
-       return 0;
+    return 0;
 }
 /*
 

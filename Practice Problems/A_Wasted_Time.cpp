@@ -22,6 +22,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <unordered_map>
+#include <iomanip>
 using namespace std;
 
 typedef long long int ll;
@@ -153,6 +154,12 @@ typedef queue<int> qi;
 
 #define MX 10e9
 
+double distance(double x1, double y1, double x2, double y2)
+{
+    float result = sqrt(pow((x1 - x2), 2) + pow((y1 - y2), 2));
+    return result;
+}
+
 int main()
 {
 
@@ -160,8 +167,28 @@ int main()
     //     freopen("input.txt", "r", stdin);
     //     freopen("output.txt", "w", stdout);
     // #endif
-
-       return 0;
+    int n, k;
+    cin >> n >> k;
+    double total_distance = 0;
+    double x1, y1, x2, y2;
+    cin >> x1 >> y1;
+    cin >> x2 >> y2;
+    while (n > 1)
+    {
+        // cout << x1 << " " << y1 << endl;
+        // cout << x2 << " " << y2 << endl;
+        double dis = distance(x1, y1, x2, y2);
+        // cout << dis << endl;
+        total_distance += dis;
+        n = n - 1;
+        x1 = x2;
+        y1 = y2;
+        cin >> x2 >> y2;
+    }
+    // cout << total_distance << endl;
+    double wasted_time = (total_distance / 50) * k;
+    printf("%.9lf", wasted_time);
+    return 0;
 }
 /*
 

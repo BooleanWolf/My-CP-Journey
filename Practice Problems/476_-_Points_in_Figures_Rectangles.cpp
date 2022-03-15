@@ -160,8 +160,48 @@ int main()
     //     freopen("input.txt", "r", stdin);
     //     freopen("output.txt", "w", stdout);
     // #endif
+    string r;
+    float a, b, c, d;
+    vector<vector<int>> rect_points;
+    int j = 0;
+    while (cin >> r >> a >> b >> c >> d)
+    {
+        if (r == "*")
+        {
+            break;
+        }
+        rect_points[j].push_back(a);
+        rect_points[j].push_back(b);
+        rect_points[j].push_back(c);
+        rect_points[j].push_back(d);
+        j = j + 1;
+    }
+    float x, y;
+    int point = 1;
+    int m = 0;
+    while (cin >> x >> y)
+    {
+        if (x == 9999.9 && y == 9999.9)
+        {
+            break;
+        }
+        while (m)
+        {
+            if (m == j)
+            {
+                break;
+            }
+            if ((x > min(rect_points[m][0], rect_points[m][1]) && x < max(rect_points[m][0], rect_points[m][1])) && (y > min(rect_points[m][2], rect_points[m][3]) && x < max(rect_points[m][2], rect_points[m][3])))
+            {
+                cout << "Point " << point << "is contained in figure " << m << endl;
+                point += 1;
+                break;
+            }
+            m++;
+        }
+    }
 
-       return 0;
+    return 0;
 }
 /*
 

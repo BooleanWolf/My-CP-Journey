@@ -160,8 +160,34 @@ int main()
     //     freopen("input.txt", "r", stdin);
     //     freopen("output.txt", "w", stdout);
     // #endif
+    ll n, x, a, b;
+    cin >> n >> x;
+    cin >> a >> b;
+    b = 7 - b;
+    int f = 0;
+    if (x == a || x == b || a == 7 - x || b == 7 - x)
+    {
+        cout << "NO";
+        return 0;
+    }
+    for (int i = 0; i < a; i++)
+    {
+        cin >> a >> b;
+        if (x == a || x == b || a == 7 - x || b == 7 - x)
+        {
+            f = 1;
+        }
+    }
+    if (f == 1)
+    {
+        cout << "NO";
+    }
+    else
+    {
+        cout << "YES";
+    }
 
-       return 0;
+    return 0;
 }
 /*
 

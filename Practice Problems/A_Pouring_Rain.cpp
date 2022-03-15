@@ -160,8 +160,17 @@ int main()
     //     freopen("input.txt", "r", stdin);
     //     freopen("output.txt", "w", stdout);
     // #endif
+    float d, h, v, e;
+    cin >> d >> h >> v >> e;
+    float r = d / 2;
 
-       return 0;
+    if (v < e)
+    {
+        cout << "NO" << endl;
+        return 0;
+    }
+
+    return 0;
 }
 /*
 
