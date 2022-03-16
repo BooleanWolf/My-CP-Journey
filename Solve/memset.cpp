@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -73,8 +74,18 @@ int main()
     //     freopen("input.txt", "r", stdin);
     //     freopen("output.txt", "w", stdout);
     // #endif
-    int a = 0;
-    cout << a << endl;
+    
+
+    bool visited[5];
+    memset(visited, 0, 5);
+    
+    visited[2] = 1;
+
+    for(int i = 0; i<5; i++) {
+        cout << visited[i] << endl;
+    }
+
+
 
     return 0;
 }

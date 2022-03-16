@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -66,15 +67,61 @@ typedef queue<int> qi;
 
 #define MX 10e9
 
+vector<int> graph[1000];
+int visited[1000];
+vi answer; 
+int in_degree[1000];
+
+
+void kahn(int v) {
+
+    queue<int> q;
+    
+    for(int i = 0; i < v; i++) {
+        if(in_degree[i]==0)
+            q.push(i); 
+    }
+    
+    while(!q.empty()) {
+        
+        int curr = q.front();
+        answer.push_back(curr);
+
+        q.pop();
+
+        for(int node: graph[curr])
+        {
+            in_degree[node]--;
+            if(in_degree[node]==0)
+                q.push(node); 
+        }
+    }
+
+    for(int node : answer) {
+        cout << node << " ";     
+    }
+
+
+}
+
+
+
+
 int main()
 {
+    int node, edges;
+    cin >> node >> edges;
+    
+    memset(in_degree, 0, 1000); 
 
-    // #ifndef ONLINE_JUDGE
-    //     freopen("input.txt", "r", stdin);
-    //     freopen("output.txt", "w", stdout);
-    // #endif
-    int a = 0;
-    cout << a << endl;
+    while(edges--) {
+        int a, b;
+        cin >> a >> b;
+        graph[a].push_back(b);
+        in_degree[b]++;
+    }
+
+    kahn(node);
 
     return 0;
 }

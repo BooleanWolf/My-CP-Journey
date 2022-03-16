@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -65,16 +66,51 @@ typedef queue<int> qi;
 // /* a = read() for reading the integer and print(a) to print that integer.  */
 
 #define MX 10e9
+vi graph[10000];
+int visited[10000];
+vi result;
+
+
+void dfs(int v) {
+    visited[v] = 1;
+
+    for(int i = 0; i < graph[v].size(); i++) {
+        if(!visited[graph[v][i]])  
+                dfs(graph[v][i]);
+    }
+    
+    result.push_back(v); 
+        
+}
+
+
 
 int main()
 {
+    int node, edge;
+    cin >> node >> edge;
+    while(edge--) 
+        {
+        int a,b;
+        cin >> a >> b;
+        if(a==0 && b==0) {
+            brea;
+        }
+        graph[a].push_back(b);
+    }
 
-    // #ifndef ONLINE_JUDGE
-    //     freopen("input.txt", "r", stdin);
-    //     freopen("output.txt", "w", stdout);
-    // #endif
-    int a = 0;
-    cout << a << endl;
+    memset(visited, 0, 10000);
+
+    for(int i = 1; i <= node; i++) {
+        if(!visited[i])
+            dfs(i);
+    }
+
+    reverse(result.begin(), result.end()); 
+
+    for(int i = 0; i < result.size(); i++) {
+        cout << result[i] << " " << endl;
+    }
 
     return 0;
 }

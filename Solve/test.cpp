@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -73,8 +74,13 @@ int main()
     //     freopen("input.txt", "r", stdin);
     //     freopen("output.txt", "w", stdout);
     // #endif
-    int a = 0;
-    cout << a << endl;
+    int a, b, c;
+    cin >> a >> b >> c;
+    while(a--){ 
+        
+        cout << b + a << " " << b + c << "  " << endl;
+
+    }
 
     return 0;
 }
