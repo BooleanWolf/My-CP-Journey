@@ -1,4 +1,5 @@
 
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -30,6 +31,8 @@ typedef long double ld;
 typedef vector<int> vi;
 typedef map<int, int> mii;
 typedef queue<int> qi;
+typedef bitset<8> bit8;
+
 
 // /* 128 bit integer reading */
 
@@ -66,17 +69,53 @@ typedef queue<int> qi;
 // /* a = read() for reading the integer and print(a) to print that integer.  */
 
 #define MX 10e9
+#define MAX 100000
+
+
 
 int main()
 {
+    ll a = 10;
 
-    // #ifndef ONLINE_JUDGE
-    //     freopen("input.txt", "r", stdin);
-    //     freopen("output.txt", "w", stdout);
-    // #endif
-    int a ;
-    cin >> a;
+    bitset<8> x(a); 
+    cout << x << endl;
+
+    a = a << 1;    // multiplying by 2
+
+    bitset<8> y(a); 
+
+
     cout << a << endl;
+    cout << y << endl;
 
+    a = 10;
+    a = a >> 1;    // dividing by 2
+
+    bitset<8> z(a); 
+
+
+    cout << a << endl;
+    cout << z << endl;
+
+    // Adding j-th object to the subset (set the jth bit from 0 to 1) 
+
+    ll b = 15;
+    bit8 q(b);
+    cout << b << endl;
+    cout << q << endl;
+
+    ll j = 5;
+    
+    ll k = 1 << j;
+
+    bit8 p(k); 
+    cout << p << endl;
+    
+    b |= (1 << j); 
+    cout << b << endl;
+
+    bit8 l(b); 
+
+    cout << l << endl;
     return 0;
 }

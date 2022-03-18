@@ -1,4 +1,5 @@
 
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -30,6 +31,8 @@ typedef long double ld;
 typedef vector<int> vi;
 typedef map<int, int> mii;
 typedef queue<int> qi;
+
+typedef bitset<8> bit8;
 
 // /* 128 bit integer reading */
 
@@ -66,50 +69,22 @@ typedef queue<int> qi;
 // /* a = read() for reading the integer and print(a) to print that integer.  */
 
 #define MX 10e9
-vector<int> graph[1000];
-int visited[1000];
-vector<int> answer; 
+#define MAX 100000
 
-
-void dfs(int v) {
-    
-    visited[v] = 1;
-
-    for(int i = 0; i < graph[v].size(); i++) {
-        if(!visited[graph[v][i]])
-            dfs(graph[v][i]);
-    }
-
-    answer.push_back(v);
-
-}
 
 
 int main()
 {
-
-    // #ifndef ONLINE_JUDGE
-    //     freopen("input.txt", "r", stdin);
-    //     freopen("output.txt", "w", stdout);
-    // #endif
-    int node, edge;
-    cin >> node >> edge;
-    memset(visited, 0, 10000);
-
-    while(edge--){
-        int a, b;
-        cin >> a >> b;
-        graph[a].push_back(b);
+    int n;
+    int c = 0;
+    cin >> n;
+    while(n){
+        if(n&1) c++;
+        n=n>>1;
     }
+    
+    cout << c << endl;
 
-    for(int i= 1; i <= node; i++){
-        if(!visited[i])
-            dfs(i);
-    }
-
-    for(int i = answer.size()-1; i >=0; i--) {
-        cout << answer[i] << endl;
-    }
 
     return 0;
 }

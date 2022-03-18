@@ -30,6 +30,10 @@ typedef vector<int> vi;
 typedef map<int, int> mii;
 typedef queue<int> qi;
 
+typedef bitset<8> bit8;
+
+
+
 // /* 128 bit integer reading */
 
 // __int128 read()
@@ -65,16 +69,39 @@ typedef queue<int> qi;
 // /* a = read() for reading the integer and print(a) to print that integer.  */
 
 #define MX 10e9
+#define MAX 100000
+
+char board[4][4];
+
 
 int main()
 {
+    for(int i = 0; i < 4; i++){
+        for(int j = 0; j  < 4; j++) {
+            cin >> board[i][j]; 
+        }
+    }
 
-    // #ifndef ONLINE_JUDGE
-    //     freopen("input.txt", "r", stdin);
-    //     freopen("output.txt", "w", stdout);
-    // #endif
-    int a = 0;
-    cout << a << endl;
+    int res = 0;
+    
+    for(int i = 0; i >= 0, i < 4; i++){
+        for(int j = 0; j >=0, j < 4; j++){
+            if( (i-1>=0 && j-1>=0) || (j-1>=0) || (i-1>=0) || ( i+1 < 4 && j +1 < 4 ) || (i+1) < 4 || (j + 1 < 4) ){
+                if(board[i-1][j-1] == '.' ||  board[i][j-1]=='.' || board[i-1][j] == '.' ||  board[i+1][j+1]=='.' || board[i+1][j] == '.' ||  board[i][j+1]=='.'){
+                    
+                    res = 1;
+                    break;
+                }
 
+            }
+        }
+    }
+
+    if(res == 1){
+        cout << "NO" << endl;
+    }
+    else{
+        cout << "YES" << endl;
+    }
     return 0;
 }

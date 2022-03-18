@@ -1,4 +1,5 @@
 
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -66,51 +67,77 @@ typedef queue<int> qi;
 // /* a = read() for reading the integer and print(a) to print that integer.  */
 
 #define MX 10e9
-vi graph[10000];
-int visited[10000];
-vi result;
+#define MAX 100000
 
 
-void dfs(int v) {
-    visited[v] = 1;
+vi graph[MAX];
+int in_degree[MAX];
+vi ans;
 
-    for(int i = 0; i < graph[v].size(); i++) {
-        if(!visited[graph[v][i]])  
-                dfs(graph[v][i]);
-    }
+
+void topo_sort(int n){
     
-    result.push_back(v); 
-        
-}
+    qi q;
 
+    for(int i = 1; i<= n; i++) {
+        if(in_degree[i]==0)
+            q.push(i);
+    
+
+    }
+
+    int cnt = 1;
+
+    while(!q.empty()){
+        
+        int curr = q.front();
+        ans.push_back(curr);
+
+        q.pop();
+
+        for(int node: graph[curr]){
+            in_degree[node]--;
+            if(in_degree[node]==0){
+                q.push(node);
+                cnt++;
+            }
+        }
+        
+    }
+
+    if(cnt != n){
+        cout << "IMPOSSIBLE" << endl;
+    }
+
+    else{
+    
+        for(int u : ans) {
+            cout << u << " ";
+        }
+    }
+
+
+}
 
 
 int main()
 {
+
     int node, edge;
     cin >> node >> edge;
-    while(edge--) 
-        {
-        int a,b;
+    
+    memset(in_degree, 0, MAX); 
+
+
+    while(edge--) {
+        int a, b;
         cin >> a >> b;
-        if(a==0 && b==0) {
-            brea;
-        }
-        graph[a].push_back(b);
+        graph[a].push_back(b); 
+        in_degree[b]++; 
     }
+       
 
-    memset(visited, 0, 10000);
-
-    for(int i = 1; i <= node; i++) {
-        if(!visited[i])
-            dfs(i);
-    }
-
-    reverse(result.begin(), result.end()); 
-
-    for(int i = 0; i < result.size(); i++) {
-        cout << result[i] << " " << endl;
-    }
+    topo_sort(node); 
 
     return 0;
 }

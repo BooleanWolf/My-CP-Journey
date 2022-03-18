@@ -1,4 +1,5 @@
 
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -66,21 +67,83 @@ typedef queue<int> qi;
 // /* a = read() for reading the integer and print(a) to print that integer.  */
 
 #define MX 10e9
+#define MAX 100000
+
+vi graph[MAX];
+int in_edges[MAX]; 
+int boss[MAX];
+vi ans;
+
+int prior = 1; 
+
+int final[MAX]; 
+
+void kahn(int node){
+    memset(boss, 0, MAX);  
+    qi q;
+
+    for(int i=0; i< node; i++) {
+        if(in_edges[i]==0){
+            q.push(i);
+            if(boss[i] == 0)
+            {boss[i] = prior;} 
+        }
+    }
+  
+      while(!q.empty()){ 
+        int curr = q.front();
+        ans.push_back(curr);
+        int curr_prior = boss[curr]; 
+
+        q.pop();
+
+        for(int ns: graph[curr]) {
+            in_edges[ns]--;
+            if(in_edges[ns]==0){
+                q.push(ns);
+                 if(boss[ns] == 0)
+                 {boss[ns] = curr_prior + 1;} 
+                }
+            
+        }
+
+    }
+
+   
+    for(int i = 0; i < node; i++){
+        cout << boss[i] <<  " "<< i << endl; 
+    }
+
+
+}
+
 
 int main()
 {
-
-    // #ifndef ONLINE_JUDGE
-    //     freopen("input.txt", "r", stdin);
-    //     freopen("output.txt", "w", stdout);
-    // #endif
-    int a, b, c;
-    cin >> a >> b >> c;
-    while(a--){ 
+    int t;
+    cin >> t;
+    int t0 = 1; 
+    memset(in_edges, 0, MAX);
+    while(t--) {
+        int node, edge;
+        cin >> node >> edge;
         
-        cout << b + a << " " << b + c << "  " << endl;
+        while(edge--) {
+            int a, b;
+            cin >> a >>b;
+            graph[b].push_back(a);
+            in_edges[a]++;
+        }
+
+        cout << "Scenario #" << t0 << ":" << endl;              
+        kahn(node);
+        t0++; 
 
     }
+
+ 
+
+
 
     return 0;
 }
