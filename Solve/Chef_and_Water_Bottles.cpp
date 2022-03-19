@@ -70,55 +70,29 @@ typedef bitset<8> bit8;
 #define MX 10e9
 #define MAX 100000
 
-char b[4][4];
-int cnt = 0;
-int res = 0;
 int main()
 {
-    for (int i = 0; i < 4; i++)
+    int t;
+    cin >> t;
+    while (t--)
     {
-        for (int j = 0; j < 4; j++)
+        ll n, x, k;
+        cin >> n >> x >> k;
+        if (k < n)
         {
-            cin >> b[i][j];
+            cout << 0 << endl;
         }
-    }
-
-    for (int i = 0; i < 4; i++)
-    {
-        for (int j = 0; j < 4; j++)
+        else
         {
-            if (b[i][j] == '#')
+            if (k / x > n)
             {
-                if ((i + 1 < 4 && j + 1 < 4) && b[i + 1][j + 1] == '.')
-                {
-                    cnt++;
-                }
-                if (cnt > 1)
-                {
-                    res = 1;
-                    break;
-                }
-                if ((i + 1 < 4) && b[i + 1][j] == '.')
-                {
-                    cnt++;
-                }
-                if (cnt > 1)
-                {
-                    res = 1;
-                    break;
-                }
-                if ((i + 1 < 4) && b[i + 1][j] == '.')
-                {
-                    cnt++;
-                }
-                if (cnt > 1)
-                {
-                    res = 1;
-                    break;
-                }
+                cout << n << endl;
+            }
+            else
+            {
+                cout << k / x << endl;
             }
         }
     }
-
     return 0;
 }
